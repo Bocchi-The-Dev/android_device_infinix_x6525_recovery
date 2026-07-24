@@ -10,5 +10,5 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/pb_X6525.mk
 
 COMMON_LUNCH_CHOICES := \
-    twrp_X6525-eng \
+    twrp_X6525-eng
     pb_X6525-eng
