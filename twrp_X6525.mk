@@ -22,7 +22,7 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 $(call inherit-product, device/infinix/X6525/device.mk)
 
 PRODUCT_DEVICE := X6525
-PRODUCT_NAME := twrp_X6525
+PRODUCT_NAME := fox_X6525
 PRODUCT_BRAND := infinix
 PRODUCT_MODEL := X6525
 PRODUCT_MANUFACTURER := infinix
