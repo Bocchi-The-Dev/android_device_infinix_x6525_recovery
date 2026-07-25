@@ -7,8 +7,8 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/twrp_X6525.mk \
-    $(LOCAL_DIR)/fox_X6525.mk
+    $(LOCAL_DIR)/pb_X6525.mk
 
 COMMON_LUNCH_CHOICES := \
     twrp_X6525-eng \
-    fox_X6525-eng
+    pb_X6525-eng
