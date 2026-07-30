@@ -23,8 +23,8 @@
 /misc emmc /dev/block/by-name/misc  
 
 /persist emmc /dev/block/by-name/persist flags=display="Persist";flashimg
-/logo emmc /dev/block/by-name/logo flags=display="logo";
-/fbootlogo emmc /dev/block/by-name/fbootlogo flags=display="fbootlogo"
+/fbootlogo               emmc     /dev/block/by-name/fbootlogo                 flags=display="Fastboot logo";flashimg=1;backup=1
+/logo                    emmc     /dev/block/by-name/logo                      flags=display="Boot logo";flashimg=1;backup=1
 /tranfs ext4 /dev/block/by-name/tranfs flags=display="tranfs"
 /miscdata emmc /dev/block/by-name/miscdata flags=display="miscdata"
 
