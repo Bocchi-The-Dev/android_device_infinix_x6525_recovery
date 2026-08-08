@@ -3,14 +3,12 @@
 # Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
 #
 # SPDX-License-Identifier: Apache-2.0
-#
-DEVICE_PATH := device/infinix/X6525
 
+DEVICE_PATH := device/infinix/X6525
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
-# A/B
 # A/B support
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
@@ -27,9 +25,7 @@ AB_OTA_PARTITIONS += \
     vbmeta_system \
     vbmeta_vendor
 
-
-
-#vendor_boot configuration
+# Vendor_Boot Configuration
 TARGET_NO_RECOVERY := true
 BOARD_BOOT_HEADER_VERSION := 4
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
@@ -65,7 +61,6 @@ TARGET_BOOTLOADER_BOARD_NAME := Infinix-X6525
 TARGET_NO_BOOTLOADER := true
 BOARD_KERNEL_IMAGE_NAME = Image
 
-
 # Display
 TARGET_SCREEN_DENSITY := 320
 
@@ -79,8 +74,7 @@ BOARD_BOOT_HEADER_VERSION := 4
 BOARD_DTB_SIZE := 122678
 BOARD_DTB_OFFSET := 0x01f00000
 BOARD_HEADER_SIZE := 2128
-BOARD_VENDOR_CMDLINE := console=ttyS1,115200n8 
-#BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
+BOARD_VENDOR_CMDLINE := "console=ttyS1,115200n8"
 
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 BOARD_MKBOOTIMG_ARGS += --vendor_cmdline $(BOARD_VENDOR_CMDLINE)
@@ -90,8 +84,6 @@ BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
-
-   
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
@@ -106,8 +98,8 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
-BOARD_SUPER_PARTITION_SIZE :=9126805504
-BOARD_SUPER_PARTITION_GROUPS := realme_dynamic_partitions
+BOARD_SUPER_PARTITION_SIZE := 9126805504
+BOARD_SUPER_PARTITION_GROUPS := infinix_dynamic_partitions
 BOARD_REALME_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext vendor product
 BOARD_REALME_DYNAMIC_PARTITIONS_SIZE :=9122611200
 
@@ -115,7 +107,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
-# DTB and dtb
+# DTBO and dtb
 BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
 
@@ -140,7 +132,7 @@ BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
-
+# Crypto
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
 BOARD_USES_METADATA_PARTITION := true
@@ -153,15 +145,6 @@ VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
 PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 
-
-# Temp
-#TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone16/temp
-
-
-TW_BRIGHTNESS_PATH := "/sys/class/backlight/sprd_backlight/brightness"
-TW_MAX_BRIGHTNESS := 4095
-TW_DEFAULT_BRIGHTNESS := 1200
-
 # TWRP Configuration
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
@@ -169,24 +152,22 @@ TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
 TW_INCLUDE_REPACKTOOLS := true
-TW_DEVICE_VERSION := X6525-Massatrio16
+TW_DEVICE_VERSION := "X6525-Massatrio16 | Kyros70"
 TW_INCLUDE_NTFS_3G := true
 TARGET_USES_MKE2FS := true
 TW_INCLUDE_LPTOOLS := true
 TW_INCLUDE_AVBCTL := true
 TW_INCLUDE_ZSTD := true
-#logs
-TARGET_USES_LOGD := true
-TWRP_INCLUDE_LOGCAT := true
-
-#prop
 TW_INCLUDE_LIBRESETPROP := true
 TW_INCLUDE_RESETPROP := true
 RECOVERY_SDCARD_ON_DATA := true
+TW_BRIGHTNESS_PATH := "/sys/class/backlight/sprd_backlight/brightness"
+TW_MAX_BRIGHTNESS := 4095
+TW_DEFAULT_BRIGHTNESS := 1200
 
-
-
-
+# Logging
+TARGET_USES_LOGD := true
+TWRP_INCLUDE_LOGCAT := true
 
 #additional lib for fix decryption
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
@@ -218,19 +199,19 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libpuresoftkeymasterdevice \
     $(TARGET_OUT_SHARED_LIBRARIES)/libcppcose_rkp \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libcppcose_rkp \
-$(TARGET_OUT_SHARED_LIBRARIES)/libsoft_attestation_cert \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libsoft_attestation_cert \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libsoft_attestation_cert \
     $(TARGET_OUT_SHARED_LIBRARIES)/libgatekeeper.so \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libgatekeeper.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.security.keymint-V2-ndk.so \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/android.hardware.security.keymint-V2-ndk.so\
-$(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.security.sharedsecret-V1-ndk.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.security.sharedsecret-V1-ndk.so \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/android.hardware.security.sharedsecret-V1-ndk.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.security.secureclock-V1-ndk.so \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/android.hardware.security.secureclock-V1-ndk.so \
-  $(TARGET_OUT_SHARED_LIBRARIES)/lib_android_keymaster_keymint_utils.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/lib_android_keymaster_keymint_utils.so \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/lib_android_keymaster_keymint_utils.so  \
-     $(TARGET_OUT_SHARED_LIBRARIES)/libkeymint.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymint.so \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libkeymint.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster_messages.so \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libkeymaster_messages.so \
