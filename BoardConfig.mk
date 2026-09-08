@@ -160,6 +160,7 @@ TW_INCLUDE_AVBCTL := true
 TW_INCLUDE_ZSTD := true
 TW_INCLUDE_LIBRESETPROP := true
 TW_INCLUDE_RESETPROP := true
+TWRP_NEW_THEME := false
 RECOVERY_SDCARD_ON_DATA := true
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/sprd_backlight/brightness"
 TW_MAX_BRIGHTNESS := 4095
