@@ -140,7 +140,6 @@ jobs:
         if_true: twrp
         if_false: omni
 
-    # hey whoever reads this, this is need to make the TWRP work. on my UNISOCs the screen doesn't display without this fix
     - name: Clone fixed bootable/recovery 
       run: |
         rm -rf bootable/recovery
@@ -167,12 +166,28 @@ jobs:
           workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/${{ github.event.inputs.BUILD_TARGET }}.img
           workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/*.zip
           workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/*vendor*.img
-        name: ${{ github.event.inputs.DEVICE_NAME }}-${{ github.run_id }}
+        name: TWRP for X6525 (unofficial)
         tag_name: ${{ github.run_id }}
         body: |
-          Manifest: ${{ github.event.inputs.MANIFEST_BRANCH }}
-          Device: ${{ github.event.inputs.DEVICE_NAME }}
-          Target: ${{ github.event.inputs.BUILD_TARGET }}.img
+          TeamWin Recovery Project 
+
+          For Infinix Smart 8 X6525
+
+          Changelogs:
+          ?
+
+          Bugs: 
+          > Decryption 
+
+          ## Flash in vendor_boot partition with fastboot.
+
+          > Reboot into fastboot 
+
+          `adb reboot fastboot`
+
+          > Flash the recovery
+
+          `fastboot flash vendor_boot /path/to/TWRP.img`
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
