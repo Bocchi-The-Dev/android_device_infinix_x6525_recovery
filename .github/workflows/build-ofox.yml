@@ -147,17 +147,29 @@ jobs:
         files: |
           ${{ env.OUTPUT_DIR }}/OrangeFox*.img
           ${{ env.OUTPUT_DIR }}/OrangeFox*.tar
-          ${{ env.OUTPUT_DIR }}/OrangeFox*.zip
-          ${{ env.OUTPUT_DIR }}/ramdisk-recovery.*
-        name: Unofficial OrangeFox for ${{ inputs.DEVICE_NAME }} // ${{ env.BUILD_DATE }}
+        name: OrangeFox for X6525 (unofficial)
         tag_name: ${{ github.run_id }}
         body: |
-          Build: ${{ inputs.MANIFEST_BRANCH }}
-          Device: [Device Tree/Branch](${{ inputs.DEVICE_TREE }}/tree/${{ inputs.DEVICE_TREE_BRANCH }})
-          Commit: Most recent [commit](${{ inputs.DEVICE_TREE }}/commit/${{ env.COMMIT_ID }}) during building.
-          MD5 (img): ${{ env.MD5_IMG }}
-          MD5 (zip): ${{ env.MD5_ZIP }}
-        prerelease: true
+          OrangeFox Recovery Project 
+
+          For Infinix Smart 8 X6525
+
+          Changelogs:
+          ?
+
+          Bugs: 
+          > Decryption 
+
+          ## Flash in vendor_boot partition with fastboot.
+
+          > Reboot into fastboot 
+
+          `adb reboot fastboot`
+
+          > Flash the recovery
+
+          `fastboot flash vendor_boot /path/to/OFRP.img`
+        prerelease: false
 
     - name: Run LDCheck
       if: inputs.LDCHECK == 'true'
