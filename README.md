@@ -3,14 +3,6 @@
 Unofficial OrangeFox **R12.0_2** as `vendor_boot.img` for X6525 / UMS9230.
 Recovery lives in `vendor_boot` (A/B, virtual A/B, header v4), so the build target is `vendorboot`.
 
-## Credits
-
-- **OrangeFox Recovery Project** — recovery source, vendor and sync scripts (base `R12.0`).
-- **Kyros70** — original X6525 device tree (`OFOX`) and the `graphics_drm.cpp` fix.
-- **Bocchi-The-Dev** — GitHub Actions workflow.
-- **TeamWin / TWRP** — minimal manifest and common recovery config.
-- **Mooments1** — fork, patches, builds and releases.
-
 ## Sources
 
 | Source | Ref |
@@ -38,3 +30,10 @@ gh workflow run build-ofox.yml --repo Mooments1/android_device_infinix_x6525_rec
 
 The workflow syncs `fox_12.1`, clones the tree, applies the graphics fix, runs
 `lunch twrp_X6525-eng && mka adbd vendorbootimage`, then publishes the image to a Release.
+
+## Credits
+
+- [**OrangeFox Recovery Project**](https://orangefox.pro) — recovery source, vendor and sync scripts (base `R12.0`).
+- [**Kyros70**](https://github.com/Kyros70) — original X6525 device tree (`OFOX`) and the `graphics_drm.cpp` fix.
+- [**Bocchi-The-Dev**](https://github.com/Bocchi-The-Dev) — GitHub Actions workflow.
+- [**TeamWin / TWRP**](https://twrp.me) — minimal manifest and common recovery config.
