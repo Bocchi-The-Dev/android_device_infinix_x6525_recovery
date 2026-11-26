@@ -16,7 +16,7 @@ Recovery lives in `vendor_boot` (A/B, virtual A/B, header v4), so the build targ
 | Source | Ref |
 |---|---|
 | [Device tree (original)](https://github.com/Kyros70/android_device_infinix_x6525_recovery) | `OFOX` |
-| [Device tree (patched)](https://github.com/Mooments1/android_device_infinix_x6525_recovery) | `OFOX-Mooments1` |
+| [Device tree (patched)](https://github.com/Mooments1/android_device_infinix_x6525_recovery) | `OFOX` |
 | [OrangeFox sync script](https://gitlab.com/OrangeFox/sync) | `master` (v034, `R12.0`) |
 | [TWRP minimal manifest](https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp) | `twrp-12.1` |
 | [OrangeFox recovery](https://gitlab.com/OrangeFox/bootable/Recovery) | `fox_12.1` |
@@ -25,13 +25,13 @@ Recovery lives in `vendor_boot` (A/B, virtual A/B, header v4), so the build targ
 
 ## Build
 
-Actions → **OrangeFox [OFRP]** → Run workflow with `MANIFEST_BRANCH=12.1`, `DEVICE_TREE_BRANCH=OFOX-Mooments1`, `BUILD_TARGET=vendorboot` (other inputs stay default).
+Actions → **OrangeFox [OFRP]** → Run workflow with `MANIFEST_BRANCH=12.1`, `DEVICE_TREE_BRANCH=OFOX`, `BUILD_TARGET=vendorboot` (other inputs stay default).
 
 ```bash
 gh workflow run build-ofox.yml --repo Mooments1/android_device_infinix_x6525_recovery \
   -f MANIFEST_BRANCH=12.1 \
   -f DEVICE_TREE=https://github.com/Mooments1/android_device_infinix_x6525_recovery \
-  -f DEVICE_TREE_BRANCH=OFOX-Mooments1 \
+  -f DEVICE_TREE_BRANCH=OFOX \
   -f DEVICE_NAME=X6525 -f DEVICE_PATH=device/infinix/X6525 \
   -f BUILD_TARGET=vendorboot -f LDCHECK=false -f LDCHECKPATH=system/bin/qseecomd
 ```
