@@ -52,4 +52,3 @@ fastboot reboot recovery
 ```
 
 AVB must be disabled. Known issue: `/data` decryption does not work.
-The `OFOX-16` branch is an experimental `fox_16.0` port, not recommended for this 13-based firmware.
