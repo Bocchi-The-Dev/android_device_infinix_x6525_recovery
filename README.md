@@ -36,4 +36,3 @@ The workflow syncs `fox_12.1`, clones the tree, applies the graphics fix, runs
 - [**OrangeFox Recovery Project**](https://orangefox.pro) — recovery source, vendor and sync scripts (base `R12.0`).
 - [**Kyros70**](https://github.com/Kyros70) — original X6525 device tree (`OFOX`) and the `graphics_drm.cpp` fix.
 - [**Bocchi-The-Dev**](https://github.com/Bocchi-The-Dev) — GitHub Actions workflow.
-- [**TeamWin / TWRP**](https://twrp.me) — minimal manifest and common recovery config.
