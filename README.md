@@ -38,17 +38,3 @@ gh workflow run build-ofox.yml --repo Mooments1/android_device_infinix_x6525_rec
 
 The workflow syncs `fox_12.1`, clones the tree, applies the graphics fix, runs
 `lunch twrp_X6525-eng && mka adbd vendorbootimage`, then publishes the image to a Release.
-
-## Release and flash
-
-Release tag = workflow run ID; asset = `OrangeFox-R12.0_2-Unofficial-X6525.img` (100 MB).
-
-```bash
-gh release download <run_id> --repo Mooments1/android_device_infinix_x6525_recovery \
-  --dir ~/Downloads/OrangeFox-X6525
-adb reboot fastboot
-fastboot flash vendor_boot_a ~/Downloads/OrangeFox-X6525/OrangeFox-*.img
-fastboot reboot recovery
-```
-
-AVB must be disabled. Known issue: `/data` decryption does not work.
