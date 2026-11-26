@@ -176,9 +176,6 @@ jobs:
           Changelogs:
           ?
 
-          Bugs: 
-          > Decryption 
-
           ## Flash in vendor_boot partition with fastboot.
 
           > Reboot into fastboot 
