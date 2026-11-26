@@ -104,7 +104,8 @@ jobs:
           sed -i 's/return sandboxConfig\.working/return false/g' build/soong/ui/build/sandbox_linux.go
         fi
         source build/envsetup.sh
-        lunch twrp_${{ inputs.DEVICE_NAME }}-eng
+        # Android 16 lunch: product-only form defaults to release=trunk_staging, variant=eng.
+        lunch twrp_${{ inputs.DEVICE_NAME }}
         mka adbd ${{ inputs.BUILD_TARGET }}image
 
     - name: Set Build Date
@@ -114,8 +115,8 @@ jobs:
     - name: Check if the recovery exists
       if: always()
       run: |
-        img_file=$(find "${{ env.OUTPUT_DIR }}" -name "*vendor*.img" -print -quit)
-        if [ -f "$img_file" ]; then
+        img_file=$(find "${{ env.OUTPUT_DIR }}" -name "*vendor*.img" -print -quit 2>/dev/null || true)
+        if [ -n "$img_file" ] && [ -f "$img_file" ]; then
           echo "CHECK_IMG_IS_OK=true" >> $GITHUB_ENV
           echo "MD5_IMG=$(md5sum "$img_file" | cut -d ' ' -f 1)" >> $GITHUB_ENV
         else

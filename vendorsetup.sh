@@ -2,7 +2,7 @@
 
 echo "Starting build"
 
-add_lunch_combo twrp_X6525-eng
+# Android 16 uses COMMON_LUNCH_CHOICES from AndroidProducts.mk; add_lunch_combo is obsolete.
 
 export FOX_AB_DEVICE=1
 export TW_DEFAULT_LANGUAGE="en"
@@ -40,7 +40,7 @@ export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
 export OF_FORCE_DATA_FORMAT_F2FS=1
 export OF_WIPE_METADATA_AFTER_DATAFORMAT=1
 export OF_USE_DMCTL=1
-export OF_USE_AIDL_BOOT_CONTROL=1
+# X6525 vendor uses HIDL boot control (vendor.sprd.hardware.boot@1.2), not AIDL.
 export OF_DYNAMIC_FULL_SIZE=9126805504
 export FOX_USE_TAR_BINARY=1
 export FOX_USE_SED_BINARY=1
